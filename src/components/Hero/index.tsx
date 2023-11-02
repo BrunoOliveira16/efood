@@ -1,12 +1,12 @@
 import Logo from '../Logo'
-import { HeroContainer, Title } from './styles'
+import { HeroContainer, Title, TitleContainer } from './styles'
 
 const Hero = () => (
   <HeroContainer>
     <Logo />
-    <div>
+    <TitleContainer>
       <Title>Viva experiências gastronômicas no conforto da sua casa</Title>
-    </div>
+    </TitleContainer>
   </HeroContainer>
 )
 

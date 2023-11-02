@@ -12,10 +12,10 @@ export const HeroContainer = styled.header`
   background: url(${backgroundImage});
   background-size: cover;
   background-repeat: no-repeat;
+`
 
-  div {
-    margin: 0 auto;
-  }
+export const TitleContainer = styled.div`
+  margin: 0 auto;
 `
 
 export const Title = styled.h1`
