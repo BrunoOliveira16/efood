@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import theme from '../../global/theme'
 
 export const ButtonContainer = styled.button`
-  display: inline-block;
+  width: 100%;
+  display: block;
   padding: 4px 6px;
   font-size: 14px;
   font-weight: 700;
