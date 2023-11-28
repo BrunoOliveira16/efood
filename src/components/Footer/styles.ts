@@ -7,7 +7,7 @@ export const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: ${theme.Colors.background};
+  background: ${theme.Colors.primary};
 `
 
 export const SocialIcons = styled.div`
