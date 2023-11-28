@@ -1,11 +1,15 @@
 import Hero from '../../components/Hero'
+import CardListHome from '../../containers/CardListHome'
 import { Container } from '../../global/globalStyle'
+import { HomeContainer } from './styles'
 
 const Home = () => (
-  <div>
+  <HomeContainer>
     <Hero />
-    <Container></Container>
-  </div>
+    <Container>
+      <CardListHome />
+    </Container>
+  </HomeContainer>
 )
 
 export default Home
