@@ -1,4 +1,5 @@
 import Button from '../Button'
+import Tag from '../Tag'
 import {
   Title,
   Text,
@@ -17,6 +18,7 @@ type CardProps = {
   nameButton?: string
   iconName?: string
   rating?: string
+  tagName?: string
   handleClick?: () => void
 }
 
@@ -27,6 +29,7 @@ const Card = ({
   iconName,
   rating,
   nameButton,
+  tagName,
   handleClick
 }: CardProps) => {
   return (
@@ -37,14 +40,17 @@ const Card = ({
       <CardContent>
         <CardHeader>
           <Title>{title}</Title>
-          <div>
+          <CardHeader>
             <Title>{rating}</Title>
-            <Icon src={iconName} alt={iconName} />
-          </div>
+            {iconName && <Icon src={iconName} alt={iconName} />}
+          </CardHeader>
         </CardHeader>
         <Text>{description}</Text>
-        <Button placeholder={nameButton} onClick={handleClick} />
+        {nameButton && (
+          <Button placeholder={nameButton} onClick={handleClick} />
+        )}
       </CardContent>
+      {tagName && <Tag placeholder={tagName} />}
     </CardContainer>
   )
 }
