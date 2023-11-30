@@ -12,6 +12,7 @@ import {
 } from './styles'
 
 type CardProps = {
+  card: 'primary' | 'second'
   title: string
   cover: string
   description: string
@@ -23,6 +24,7 @@ type CardProps = {
 }
 
 const Card = ({
+  card = 'primary',
   title,
   cover,
   description,
@@ -34,20 +36,25 @@ const Card = ({
 }: CardProps) => {
   return (
     <CardContainer>
-      <CardImage>
+      <CardImage card={card}>
         <Cover src={cover} alt={cover} />
       </CardImage>
-      <CardContent>
+      <CardContent card={card}>
         <CardHeader>
-          <Title>{title}</Title>
+          <Title card={card}>{title}</Title>
           <CardHeader>
-            <Title>{rating}</Title>
+            {rating && <Title card={card}>{rating}</Title>}
             {iconName && <Icon src={iconName} alt={iconName} />}
           </CardHeader>
         </CardHeader>
-        <Text>{description}</Text>
+        <Text card={card}>{description}</Text>
         {nameButton && (
-          <Button placeholder={nameButton} onClick={handleClick} />
+          <Button
+            placeholder={nameButton}
+            onClick={handleClick}
+            displayMode={card === 'primary' ? 'inlineBlock' : 'fullWidth'}
+            themeMode={card}
+          />
         )}
       </CardContent>
       {tagName && <Tag placeholder={tagName} />}
