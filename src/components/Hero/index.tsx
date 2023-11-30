@@ -1,12 +1,18 @@
 import Logo from '../Logo'
 import { HeroContainer, Title, TitleContainer } from './styles'
 
-const Hero = () => (
+type HeroProps = {
+  title?: string
+}
+
+const Hero = ({ title }: HeroProps) => (
   <HeroContainer>
     <Logo />
-    <TitleContainer>
-      <Title>Viva experiências gastronômicas no conforto da sua casa</Title>
-    </TitleContainer>
+    {title && (
+      <TitleContainer>
+        <Title>{title}</Title>
+      </TitleContainer>
+    )}
   </HeroContainer>
 )
 
