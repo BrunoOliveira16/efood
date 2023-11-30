@@ -5,7 +5,7 @@ import { HomeContainer } from './styles'
 
 const Home = () => (
   <HomeContainer>
-    <Hero />
+    <Hero title="Viva experiências gastronômicas no conforto da sua casa" />
     <Container>
       <CardListHome />
     </Container>
