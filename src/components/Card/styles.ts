@@ -21,8 +21,10 @@ export const CardContainer = styled.div`
 
 export const CardImage = styled.div<CardProps>`
   width: 100%;
-  height: 300px;
   border 1px solid transparent;
+  background-color: ${(props) =>
+    props.card === 'primary' ? '' : theme.Colors.text};
+  height: ${(props) => (props.card === 'primary' ? '300px' : '200px')};
   padding: ${(props) => (props.card === 'primary' ? 0 : '8px 8px 0 8px')};
 `
 
@@ -41,7 +43,7 @@ export const CardContent = styled.div<CardProps>`
   border-bottom: 1px solid;
   border-left: 1px solid;
   border-color: ${(props) =>
-    props.card === 'primary' ? theme.Colors.text : ''};
+    props.card === 'primary' ? theme.Colors.text : 'transparent'};
 `
 
 export const CardHeader = styled.header`
