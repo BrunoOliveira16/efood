@@ -15,9 +15,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
   font-weight: 700;
   text-align: center;
   background-color: ${(props) =>
-    props.themeMode === 'primary'
-      ? theme.Colors.text
-      : theme.Colors.background};
+    props.themeMode === 'primary' ? theme.Colors.text : theme.Colors.primary};
   color: ${(props) =>
     props.themeMode === 'primary'
       ? theme.Colors.background
