@@ -1,35 +1,60 @@
+import { useEffect, useState } from 'react'
+import { fetchData } from '../../api'
+
 import Card from '../../components/Card'
-import { restaurantsData } from '../../utils'
 
 import { CardListContainer } from './styles'
 import Star from '../../assets/icons/star.svg'
+import { getDescription } from '../../utils'
 
-type RestaurantsDataProps = {
+export type MenuDataProps = {
   id: number
-  title: string
-  rating: string
-  tagName: string[]
-  description: string
-  cover: string
+  nome: string
+  descricao: string
+  foto: string
+  porcao: string
+  preco: number
+}
+
+export type RestaurantsDataProps = {
+  id: number
+  titulo: string
+  avaliacao: string
+  destacado: boolean
+  tipo: string
+  descricao: string
+  capa: string
+  cardapio: MenuDataProps[]
 }
 
 const CardListHome = () => {
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    fetchData().then((data) => {
+      setData(data)
+    })
+  }, [])
+
+  console.log(data)
+
   return (
     <CardListContainer>
-      {restaurantsData.map((item: RestaurantsDataProps) => (
+      {data.map((item: RestaurantsDataProps) => (
         <>
           <Card
             key={item.id}
             card="primary"
             kindButton="link"
             nameButton="Saiba Mais"
-            to="/perfil"
+            to={`/perfil/${item.id}`}
             iconName={Star}
-            title={item.title}
-            description={item.description}
-            rating={item.rating}
-            tagName={item.tagName}
-            cover={item.cover}
+            title={item.titulo}
+            description={getDescription(item.descricao)}
+            rating={item.avaliacao}
+            tagType={item.tipo}
+            tagHighlight={item.destacado}
+            cover={item.capa}
           />
         </>
       ))}
