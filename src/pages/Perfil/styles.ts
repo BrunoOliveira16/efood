@@ -2,6 +2,10 @@ import styled from 'styled-components'
 import theme from '../../global/theme'
 import { Container } from '../../global/globalStyle'
 
+export const PerfilContainer = styled.main`
+  background-color: ${theme.Colors.background};
+`
+
 export const BannerContainer = styled.div`
   width: 100%;
   height: 280px;
