@@ -1,68 +1,74 @@
 import Card from '../../components/Card'
-import CoverImage from '../../assets/pizza-img.png'
-import { CardListContainer } from './styles'
+import { ListData } from '../../utils'
 
-const products = [
-  {
-    id: 1,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    cover: CoverImage
-  },
-  {
-    id: 2,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    cover: CoverImage
-  },
-  {
-    id: 3,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    cover: CoverImage
-  },
-  {
-    id: 4,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    cover: CoverImage
-  },
-  {
-    id: 5,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    cover: CoverImage
-  },
-  {
-    id: 6,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    cover: CoverImage
-  }
-]
+import {
+  BannerContainer,
+  CardListContainer,
+  SubTitle,
+  TextMessage,
+  Title
+} from './styles'
+import { Container } from '../../global/globalStyle'
+
+type ProductProps = {
+  id: number
+  title: string
+  description: string
+  cover: string
+}
+
+type ListDataProps = {
+  id_restaurant: number
+  restaurant: string
+  type: string
+  bannerImage: string
+  products: ProductProps[]
+}
 
 const CardListPerfil = () => {
+  function renderProductList(products: ProductProps[]) {
+    if (!products || products.length === 0) {
+      return (
+        <TextMessage>
+          Não existem ainda produtos para este restaurante
+        </TextMessage>
+      )
+    }
+
+    return products.map((product) => (
+      <Card
+        key={product.id}
+        card="second"
+        kindButton="button"
+        nameButton="Adicionar ao carrinho"
+        title={product.title}
+        description={product.description}
+        cover={product.cover}
+      />
+    ))
+  }
+
   return (
-    <CardListContainer>
-      {products.map((item) => (
-        <>
-          <Card
-            key={item.id}
-            card="second"
-            nameButton="Adicionar ao carrinho"
-            title={item.title}
-            description={item.description}
-            cover={item.cover}
-          />
-        </>
+    <>
+      {ListData.map((item: ListDataProps) => (
+        <BannerContainer
+          key={item.id_restaurant}
+          style={{ backgroundImage: `url(${item.bannerImage})` }}
+        >
+          <Container>
+            <SubTitle>{item.type}</SubTitle>
+            <Title>{item.restaurant}</Title>
+          </Container>
+        </BannerContainer>
       ))}
-    </CardListContainer>
+      <Container>
+        {ListData.map((item) => (
+          <CardListContainer key={item.id_restaurant}>
+            {renderProductList(item.products)}
+          </CardListContainer>
+        ))}
+      </Container>
+    </>
   )
 }
 
