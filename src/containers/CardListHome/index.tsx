@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { fetchData } from '../../api'
 
 import Card from '../../components/Card'
 
@@ -31,12 +30,10 @@ const CardListHome = () => {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    fetchData().then((data) => {
-      setData(data)
-    })
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes`)
+      .then((res) => res.json())
+      .then((res) => setData(res))
   }, [])
-
-  console.log(data)
 
   return (
     <CardListContainer>

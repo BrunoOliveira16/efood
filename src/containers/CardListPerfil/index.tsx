@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { MenuDataProps, RestaurantsDataProps } from '../CardListHome'
 import Card from '../../components/Card'
-import { ListData } from '../../utils'
 
 import {
   BannerContainer,
@@ -9,24 +11,19 @@ import {
   Title
 } from './styles'
 import { Container } from '../../global/globalStyle'
-
-type ProductProps = {
-  id: number
-  title: string
-  description: string
-  cover: string
-}
-
-type ListDataProps = {
-  id_restaurant: number
-  restaurant: string
-  type: string
-  bannerImage: string
-  products: ProductProps[]
-}
+import { getDescription } from '../../utils'
 
 const CardListPerfil = () => {
-  function renderProductList(products: ProductProps[]) {
+  const { id } = useParams()
+  const [data, setData] = useState<RestaurantsDataProps>()
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setData(res))
+  }, [id])
+
+  function renderProductList(products: MenuDataProps[]) {
     if (!products || products.length === 0) {
       return (
         <TextMessage>
@@ -41,32 +38,30 @@ const CardListPerfil = () => {
         card="second"
         kindButton="button"
         nameButton="Adicionar ao carrinho"
-        title={product.title}
-        description={product.description}
-        cover={product.cover}
+        title={product.nome}
+        description={getDescription(product.descricao)}
+        cover={product.foto}
       />
     ))
   }
 
+  if (!data) return <h3>Carregando...</h3>
+
   return (
     <>
-      {ListData.map((item: ListDataProps) => (
-        <BannerContainer
-          key={item.id_restaurant}
-          style={{ backgroundImage: `url(${item.bannerImage})` }}
-        >
-          <Container>
-            <SubTitle>{item.type}</SubTitle>
-            <Title>{item.restaurant}</Title>
-          </Container>
-        </BannerContainer>
-      ))}
+      <BannerContainer
+        key={data.id}
+        style={{ backgroundImage: `url(${data.capa})` }}
+      >
+        <Container>
+          <SubTitle>{data?.tipo}</SubTitle>
+          <Title>{data?.titulo}</Title>
+        </Container>
+      </BannerContainer>
       <Container>
-        {ListData.map((item) => (
-          <CardListContainer key={item.id_restaurant}>
-            {renderProductList(item.products)}
-          </CardListContainer>
-        ))}
+        <CardListContainer key={data.id}>
+          {renderProductList(data.cardapio)}
+        </CardListContainer>
       </Container>
     </>
   )
