@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import theme from '../../global/theme'
 import backgroundImage from '../../assets/hero.png'
+import { Container } from '../../global/globalStyle'
 
 export const HeroContainer = styled.header`
   width: 100%;
@@ -11,6 +12,12 @@ export const HeroContainer = styled.header`
   background: url(${backgroundImage});
   background-size: cover;
   background-repeat: no-repeat;
+
+  ${Container} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `
 
 export const HeroHeader = styled.div`
