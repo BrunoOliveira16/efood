@@ -8,23 +8,27 @@ import {
   CardContent,
   CardImage,
   CardContainer,
+  ContainerTags,
   Cover
 } from './styles'
 
 type CardProps = {
   card: 'primary' | 'second'
+  kindButton: 'button' | 'link'
   title: string
   cover: string
   description: string
-  nameButton?: string
+  nameButton: string
   iconName?: string
   rating?: string
-  tagName?: string
+  tagName?: string[]
+  to?: string
   handleClick?: () => void
 }
 
 const Card = ({
   card = 'primary',
+  kindButton = 'link',
   title,
   cover,
   description,
@@ -32,8 +36,45 @@ const Card = ({
   rating,
   nameButton,
   tagName,
+  to,
   handleClick
 }: CardProps) => {
+  function renderTypeButton(kind: string) {
+    if (kind === 'link') {
+      return (
+        <Button
+          kind="link"
+          placeholder={nameButton}
+          displayMode={card === 'primary' ? 'inlineBlock' : 'fullWidth'}
+          themeMode={card}
+          to={to}
+        />
+      )
+    }
+
+    return (
+      <Button
+        kind="button"
+        placeholder={nameButton}
+        onClick={handleClick}
+        displayMode={card === 'primary' ? 'inlineBlock' : 'fullWidth'}
+        themeMode={card}
+      />
+    )
+  }
+
+  function renderTags(tags: string[] | undefined) {
+    if (!tags || tags.length === 0) return null
+
+    return (
+      <ContainerTags>
+        {tags.map((tag, index) => (
+          <Tag placeholder={tag} key={index} />
+        ))}
+      </ContainerTags>
+    )
+  }
+
   return (
     <CardContainer>
       <CardImage card={card}>
@@ -48,16 +89,9 @@ const Card = ({
           </CardHeader>
         </CardHeader>
         <Text card={card}>{description}</Text>
-        {nameButton && (
-          <Button
-            placeholder={nameButton}
-            onClick={handleClick}
-            displayMode={card === 'primary' ? 'inlineBlock' : 'fullWidth'}
-            themeMode={card}
-          />
-        )}
+        {renderTypeButton(kindButton)}
       </CardContent>
-      {tagName && <Tag placeholder={tagName} />}
+      {renderTags(tagName)}
     </CardContainer>
   )
 }

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import theme from '../../global/theme'
-import { TagContainer } from '../Tag/styles'
 
 type CardProps = {
   card: 'primary' | 'second'
@@ -10,13 +9,13 @@ export const CardContainer = styled.div`
   max-width: 100%;
   display: block;
   position: relative;
+`
 
-  ${TagContainer} {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    z-index: 1;
-  }
+export const ContainerTags = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1;
 `
 
 export const CardImage = styled.div<CardProps>`
