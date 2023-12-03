@@ -3,6 +3,7 @@ import theme from '../../global/theme'
 
 export const TagContainer = styled.div`
   display: inline-block;
+  margin-left: 8px;
   padding: 6px 10px;
   background-color: ${theme.Colors.text};
 `
