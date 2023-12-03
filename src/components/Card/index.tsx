@@ -40,23 +40,12 @@ const Card = ({
   handleClick
 }: CardProps) => {
   function renderTypeButton(kind: string) {
-    if (kind === 'link') {
-      return (
-        <Button
-          kind="link"
-          placeholder={nameButton}
-          displayMode={card === 'primary' ? 'inlineBlock' : 'fullWidth'}
-          themeMode={card}
-          to={to}
-        />
-      )
-    }
-
     return (
       <Button
-        kind="button"
+        kind={kindButton}
         placeholder={nameButton}
-        onClick={handleClick}
+        onClick={kind === 'button' ? handleClick : undefined}
+        to={kind === 'link' ? `${to}` : undefined}
         displayMode={card === 'primary' ? 'inlineBlock' : 'fullWidth'}
         themeMode={card}
       />
