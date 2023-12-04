@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import theme from '../../global/theme'
 import backgroundImage from '../../assets/hero.png'
 import { Container } from '../../global/globalStyle'
+import { Link } from 'react-router-dom'
 
 export const HeroContainer = styled.header`
   width: 100%;
@@ -21,6 +22,7 @@ export const HeroContainer = styled.header`
 `
 
 export const HeroHeader = styled.div`
+  color: ${theme.Colors.text};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,9 +30,14 @@ export const HeroHeader = styled.div`
 `
 
 export const Title = styled.h1`
-  color: ${theme.Colors.text};
-  text-align: center;
   font-size: ${theme.fontSizes.headingM};
+  font-weight: 900;
+`
+
+export const TitleLink = styled(Link)`
+  color: ${theme.Colors.text};
+  font-size: ${theme.fontSizes.headingM};
+  text-decoration: none;
   font-weight: 900;
 `
 
