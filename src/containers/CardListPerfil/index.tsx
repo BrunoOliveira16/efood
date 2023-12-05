@@ -12,7 +12,6 @@ import {
   Title
 } from './styles'
 import { Container } from '../../global/globalStyle'
-import { getDescription } from '../../utils'
 import Modal from '../../components/Modal'
 
 const CardListPerfil = () => {
@@ -29,7 +28,7 @@ const CardListPerfil = () => {
 
   function handleCardClick(itemId: number) {
     setSelectedItemId(itemId)
-    setOpenModal(true)
+    setOpenModal(!openModal)
   }
 
   function renderProductList(products: MenuDataProps[]) {
@@ -48,7 +47,7 @@ const CardListPerfil = () => {
         kindButton="button"
         nameButton="Adicionar ao carrinho"
         title={product.nome}
-        description={getDescription(product.descricao)}
+        description={product.descricao}
         cover={product.foto}
         handleClick={() => handleCardClick(product.id)}
       />
@@ -71,9 +70,8 @@ const CardListPerfil = () => {
         cover={selectedItem.foto}
         potion={selectedItem.porcao}
         price={selectedItem.preco}
-        visible={openModal}
         closeModal={() => {
-          setOpenModal(false)
+          setOpenModal(!openModal)
           setSelectedItemId(null)
         }}
       />
