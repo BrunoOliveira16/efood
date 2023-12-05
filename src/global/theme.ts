@@ -3,7 +3,8 @@ export default {
     primary: '#FFEBD9',
     text: '#E66767',
     background: '#FFF8F2',
-    white: '#FFF'
+    white: '#FFF',
+    overlayColor: 'rgba(0, 0, 0, 0.8)'
   },
   fontSizes: {
     headingXl: '36px',

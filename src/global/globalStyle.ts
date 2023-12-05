@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
     }
 `
 
-export const Container = styled.main`
+export const Container = styled.div`
   max-width: 1024px;
   min-width: 375px;
   width: 100%;
