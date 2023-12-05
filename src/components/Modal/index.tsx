@@ -1,4 +1,5 @@
 import Button from '../Button'
+import { formatPrice } from '../../utils'
 import {
   ModalContainer,
   ContainerImage,
@@ -27,6 +28,13 @@ const Modal = ({
   price,
   closeModal
 }: ModalProps) => {
+  function renderTextPotion(potion: string) {
+    if (potion === '1 pessoa') {
+      return <Text>Serve: {potion}</Text>
+    }
+    return <Text>Serve: de {potion}</Text>
+  }
+
   return (
     <Fade>
       <Container>
@@ -37,12 +45,12 @@ const Modal = ({
           <ContainerText>
             <Title>{title}</Title>
             <Text>{description}</Text>
-            <Text>Serve: de {potion}</Text>
+            {renderTextPotion(potion)}
             <Button
               kind="button"
               displayMode="inlineBlock"
               themeMode="second"
-              placeholder={`Adicionar ao carrinho - R$ ${price}`}
+              placeholder={`Adicionar ao carrinho - ${formatPrice(price)}`}
             />
           </ContainerText>
           <MdClose onClick={closeModal} />
