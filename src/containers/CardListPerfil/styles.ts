@@ -2,6 +2,10 @@ import styled from 'styled-components'
 import theme from '../../global/theme'
 import { Container } from '../../global/globalStyle'
 
+export const ContainerListPerfil = styled.main`
+  position: relative;
+`
+
 export const BannerContainer = styled.div`
   width: 100%;
   height: 280px;
