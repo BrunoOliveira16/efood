@@ -15,13 +15,15 @@ export const Fade = styled.div`
 `
 
 export const ModalContainer = styled.div`
+  max-width: 1024px;
+  width: 100%;
   display: flex;
   gap: 24px;
   padding: 32px;
-  margin-top: 300px;
+  margin-top: 16px;
   background-color: ${theme.Colors.text};
   color: ${theme.Colors.white};
-  position: relative;
+  position: fixed;
 
   svg {
     width: 18px;
@@ -53,7 +55,7 @@ export const ContainerText = styled.div`
 export const Title = styled.h2`
   font-size: ${theme.fontSizes.headingM};
   font-weight: 900;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 `
 
 export const Text = styled.p`
