@@ -42,7 +42,9 @@ export const TitleLink = styled(Link)`
 `
 
 export const TextContainer = styled.div`
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 export const Text = styled.h2`

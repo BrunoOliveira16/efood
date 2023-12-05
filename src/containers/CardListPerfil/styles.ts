@@ -39,8 +39,8 @@ export const CardListContainer = styled.div`
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 80px;
-  row-gap: 48px;
+  column-gap: 32px;
+  row-gap: 40px;
 
   background-color: ${theme.Colors.background};
 `
