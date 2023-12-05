@@ -13,12 +13,14 @@ import {
 } from './styles'
 import { Container } from '../../global/globalStyle'
 import Modal from '../../components/Modal'
+import { getDescriptionProduct } from '../../utils'
 
 const CardListPerfil = () => {
-  const { id } = useParams()
   const [data, setData] = useState<RestaurantsDataProps>()
   const [selectedItemId, setSelectedItemId] = useState<number | null>(null)
   const [openModal, setOpenModal] = useState(false)
+
+  const { id } = useParams()
 
   useEffect(() => {
     fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
@@ -47,7 +49,7 @@ const CardListPerfil = () => {
         kindButton="button"
         nameButton="Adicionar ao carrinho"
         title={product.nome}
-        description={product.descricao}
+        description={getDescriptionProduct(product.descricao)}
         cover={product.foto}
         handleClick={() => handleCardClick(product.id)}
       />
