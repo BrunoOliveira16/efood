@@ -22,6 +22,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
       ? theme.Colors.background
       : theme.Colors.text};
   border: none;
+  cursor: pointer;
 `
 
 export const ButtonContainerLink = styled(Link)<ButtonProps>`

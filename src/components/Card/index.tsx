@@ -21,7 +21,8 @@ type CardProps = {
   nameButton: string
   iconName?: string
   rating?: string
-  tagName?: string[]
+  tagType?: string | undefined
+  tagHighlight?: boolean | undefined
   to?: string
   handleClick?: () => void
 }
@@ -35,7 +36,8 @@ const Card = ({
   iconName,
   rating,
   nameButton,
-  tagName,
+  tagType,
+  tagHighlight,
   to,
   handleClick
 }: CardProps) => {
@@ -52,14 +54,19 @@ const Card = ({
     )
   }
 
-  function renderTags(tags: string[] | undefined) {
-    if (!tags || tags.length === 0) return null
+  function renderTags(type: string, highlight: boolean | undefined) {
+    if (type && highlight === true) {
+      return (
+        <ContainerTags>
+          <Tag placeholder="Destaque da semana" />
+          <Tag placeholder={type} />
+        </ContainerTags>
+      )
+    }
 
     return (
       <ContainerTags>
-        {tags.map((tag, index) => (
-          <Tag placeholder={tag} key={index} />
-        ))}
+        <Tag placeholder={type} />
       </ContainerTags>
     )
   }
@@ -80,7 +87,7 @@ const Card = ({
         <Text card={card}>{description}</Text>
         {renderTypeButton(kindButton)}
       </CardContent>
-      {renderTags(tagName)}
+      {tagType && renderTags(tagType, tagHighlight)}
     </CardContainer>
   )
 }
