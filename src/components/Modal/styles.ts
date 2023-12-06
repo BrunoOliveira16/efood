@@ -1,18 +1,5 @@
 import styled from 'styled-components'
 import theme from '../../global/theme'
-import { Container } from '../../global/globalStyle'
-
-export const Fade = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-color: ${theme.Colors.overlayColor};
-  z-index: 2;
-
-  ${Container} {
-    position: relative;
-  }
-`
 
 export const ModalContainer = styled.div`
   max-width: 1024px;
@@ -24,6 +11,7 @@ export const ModalContainer = styled.div`
   background-color: ${theme.Colors.text};
   color: ${theme.Colors.white};
   position: fixed;
+  z-index: 3;
 
   svg {
     width: 18px;

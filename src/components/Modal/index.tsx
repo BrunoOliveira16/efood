@@ -5,11 +5,10 @@ import {
   ContainerImage,
   Title,
   Text,
-  Fade,
   ContainerText
 } from './styles'
-import { Container } from '../../global/globalStyle'
 import { MdClose } from 'react-icons/md'
+import { Container } from '../../global/globalStyle'
 
 type ModalProps = {
   title: string
@@ -36,27 +35,25 @@ const Modal = ({
   }
 
   return (
-    <Fade>
-      <Container>
-        <ModalContainer>
-          <ContainerImage>
-            <img src={cover} alt={title} />
-          </ContainerImage>
-          <ContainerText>
-            <Title>{title}</Title>
-            <Text>{description}</Text>
-            {renderTextPotion(potion)}
-            <Button
-              kind="button"
-              displayMode="inlineBlock"
-              themeMode="second"
-              placeholder={`Adicionar ao carrinho - ${formatPrice(price)}`}
-            />
-          </ContainerText>
-          <MdClose onClick={closeModal} />
-        </ModalContainer>
-      </Container>
-    </Fade>
+    <Container>
+      <ModalContainer>
+        <ContainerImage>
+          <img src={cover} alt={title} />
+        </ContainerImage>
+        <ContainerText>
+          <Title>{title}</Title>
+          <Text>{description}</Text>
+          {renderTextPotion(potion)}
+          <Button
+            kind="button"
+            displayMode="inlineBlock"
+            themeMode="second"
+            placeholder={`Adicionar ao carrinho - ${formatPrice(price)}`}
+          />
+        </ContainerText>
+        <MdClose onClick={closeModal} />
+      </ModalContainer>
+    </Container>
   )
 }
 
