@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { MenuDataProps, RestaurantsDataProps } from '../CardListHome'
+import { getDescriptionProduct } from '../../utils'
 import Card from '../../components/Card'
+import Modal from '../../components/Modal'
 
 import {
   BannerContainer,
@@ -12,10 +14,12 @@ import {
   Title
 } from './styles'
 import { Container } from '../../global/globalStyle'
-import Modal from '../../components/Modal'
-import { getDescriptionProduct } from '../../utils'
 
-const CardListPerfil = () => {
+type CardListPerilProps = {
+  onModalOpenChange: (args: boolean) => void
+}
+
+const CardListPerfil = ({ onModalOpenChange }: CardListPerilProps) => {
   const [data, setData] = useState<RestaurantsDataProps>()
   const [selectedItemId, setSelectedItemId] = useState<number | null>(null)
   const [openModal, setOpenModal] = useState(false)
@@ -31,6 +35,13 @@ const CardListPerfil = () => {
   function handleCardClick(itemId: number) {
     setSelectedItemId(itemId)
     setOpenModal(!openModal)
+    onModalOpenChange(!openModal)
+  }
+
+  function handleCloseModal() {
+    setOpenModal(!openModal)
+    setSelectedItemId(null)
+    onModalOpenChange(!openModal)
   }
 
   function renderProductList(products: MenuDataProps[]) {
@@ -72,10 +83,7 @@ const CardListPerfil = () => {
         cover={selectedItem.foto}
         potion={selectedItem.porcao}
         price={selectedItem.preco}
-        closeModal={() => {
-          setOpenModal(!openModal)
-          setSelectedItemId(null)
-        }}
+        closeModal={handleCloseModal}
       />
     )
   }
