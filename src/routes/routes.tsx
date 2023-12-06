@@ -6,7 +6,7 @@ import Perfil from '../pages/Perfil'
 const Router = () => (
   <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/perfil" element={<Perfil />} />
+    <Route path="/perfil/:id" element={<Perfil />} />
   </Routes>
 )
 
