@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { MenuDataProps, RestaurantsDataProps } from '../CardListHome'
+import { useGetRestaurantQuery } from '../../services/api'
+import { MenuDataProps } from '../CardListHome'
 import { getDescriptionProduct } from '../../utils'
 import Card from '../../components/Card'
 import Modal from '../../components/Modal'
@@ -20,17 +21,11 @@ type CardListPerilProps = {
 }
 
 const CardListPerfil = ({ onModalOpenChange }: CardListPerilProps) => {
-  const [data, setData] = useState<RestaurantsDataProps>()
   const [selectedItemId, setSelectedItemId] = useState<number | null>(null)
   const [openModal, setOpenModal] = useState(false)
 
   const { id } = useParams()
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setData(res))
-  }, [id])
+  const { data } = useGetRestaurantQuery(id!)
 
   function handleCardClick(itemId: number) {
     setSelectedItemId(itemId)
