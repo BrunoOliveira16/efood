@@ -1,20 +1,13 @@
-import { useState } from 'react'
 import Hero from '../../components/Hero'
-import Footer from '../../components/Footer'
 import CardListPerfil from '../../containers/CardListPerfil'
 
-import { ContentContainer, PerfilContainer } from './styles'
+import { PerfilContainer } from './styles'
 
 const Perfil = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
   return (
-    <PerfilContainer isModalOpen={isModalOpen}>
+    <PerfilContainer>
       <Hero title="Restaurantes" />
-      <ContentContainer>
-        <CardListPerfil onModalOpenChange={setIsModalOpen} />
-      </ContentContainer>
-      <Footer />
+      <CardListPerfil />
     </PerfilContainer>
   )
 }

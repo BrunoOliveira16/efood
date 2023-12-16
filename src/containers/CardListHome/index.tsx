@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useGetFeaturedRestaurantsQuery } from '../../services/api'
+import { getDescription } from '../../utils'
 
 import Card from '../../components/Card'
 
 import { CardListContainer } from './styles'
 import Star from '../../assets/icons/star.svg'
-import { getDescription } from '../../utils'
 
 export type MenuDataProps = {
   id: number
@@ -27,13 +27,9 @@ export type RestaurantsDataProps = {
 }
 
 const CardListHome = () => {
-  const [data, setData] = useState([])
+  const { data } = useGetFeaturedRestaurantsQuery()
 
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes`)
-      .then((res) => res.json())
-      .then((res) => setData(res))
-  }, [])
+  if (!data) return <h3>Carregando...</h3>
 
   return (
     <CardListContainer>
