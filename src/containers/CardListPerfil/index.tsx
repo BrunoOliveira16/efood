@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
 import { useGetRestaurantQuery } from '../../services/api'
-import { MenuDataProps } from '../CardListHome'
+import { add, open } from '../../store/reducers/cart'
 import { getDescriptionProduct } from '../../utils'
+import { MenuDataProps } from '../CardListHome'
 import Card from '../../components/Card'
 import Modal from '../../components/Modal'
 
@@ -16,31 +19,33 @@ import {
 } from './styles'
 import { Container } from '../../global/globalStyle'
 
-type CardListPerilProps = {
-  onModalOpenChange: (args: boolean) => void
-}
-
-const CardListPerfil = ({ onModalOpenChange }: CardListPerilProps) => {
+const CardListPerfil = () => {
   const [selectedItemId, setSelectedItemId] = useState<number | null>(null)
-  const [openModal, setOpenModal] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   const { id } = useParams()
   const { data } = useGetRestaurantQuery(id!)
 
+  const dispatch = useDispatch()
+
   function handleCardClick(itemId: number) {
     setSelectedItemId(itemId)
-    setOpenModal(!openModal)
-    onModalOpenChange(!openModal)
+    setShowModal(true)
   }
 
   function handleCloseModal() {
-    setOpenModal(!openModal)
+    setShowModal(false)
     setSelectedItemId(null)
-    onModalOpenChange(!openModal)
+  }
+
+  function addItemToCart(item: MenuDataProps) {
+    dispatch(add(item))
+    setShowModal(false)
+    dispatch(open())
   }
 
   function renderProductList(products: MenuDataProps[]) {
-    if (!products || products.length === 0) {
+    if (!products) {
       return (
         <TextMessage>
           Não existem ainda produtos para este restaurante
@@ -78,7 +83,9 @@ const CardListPerfil = ({ onModalOpenChange }: CardListPerilProps) => {
         cover={selectedItem.foto}
         potion={selectedItem.porcao}
         price={selectedItem.preco}
+        openModal={showModal}
         closeModal={handleCloseModal}
+        handleAddItem={() => addItemToCart(selectedItem)}
       />
     )
   }
