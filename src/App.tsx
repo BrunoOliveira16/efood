@@ -4,6 +4,7 @@ import Router from './routes/routes'
 import Cart from './components/Cart'
 import GlobalStyle from './global/globalStyle'
 import { store } from './store'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <BrowserRouter>
         <GlobalStyle />
         <Router />
+        <Footer />
         <Cart />
       </BrowserRouter>
     </Provider>
