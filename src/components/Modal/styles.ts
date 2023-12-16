@@ -1,7 +1,31 @@
 import styled from 'styled-components'
 import theme from '../../global/theme'
 
-export const ModalContainer = styled.div`
+type ModalContainerProps = {
+  isOpen: boolean
+}
+
+export const ModalContainer = styled.div<ModalContainerProps>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: ${(props) => (props.isOpen === true ? 'flex' : 'none')};
+  justify-content: center;
+  z-index: 2;
+`
+
+export const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: ${theme.Colors.overlayColor};
+`
+
+export const ModalContent = styled.div`
   max-width: 1024px;
   width: 100%;
   display: flex;
@@ -11,7 +35,8 @@ export const ModalContainer = styled.div`
   background-color: ${theme.Colors.text};
   color: ${theme.Colors.white};
   position: fixed;
-  z-index: 3;
+  top: 160px;
+  z-index: 2;
 
   svg {
     width: 18px;

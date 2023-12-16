@@ -1,4 +1,3 @@
-import Footer from '../../components/Footer'
 import Hero from '../../components/Hero'
 import CardListHome from '../../containers/CardListHome'
 import { Container } from '../../global/globalStyle'
@@ -10,7 +9,6 @@ const Home = () => (
     <Container>
       <CardListHome />
     </Container>
-    <Footer />
   </HomeContainer>
 )
 

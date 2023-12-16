@@ -1,3 +1,6 @@
+import { useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+
 import Logo from '../Logo'
 
 import {
@@ -17,13 +20,15 @@ type HeroProps = {
 }
 
 const Hero = ({ textContent, title }: HeroProps) => {
+  const { items } = useSelector((state: RootReducer) => state.cart)
+
   function renderHeaderContent(item: string | undefined) {
     if (item && item !== undefined) {
       return (
         <>
           <TitleLink to="/">{item}</TitleLink>
           <Logo kind="link" cover={LogoImage} title="Logo eFood" to="/" />
-          <Title>0 produto(s) no carrinho</Title>
+          <Title>{items.length} produto(s) no carrinho</Title>
         </>
       )
     }
