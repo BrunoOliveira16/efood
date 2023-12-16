@@ -1,19 +1,19 @@
 import styled from 'styled-components'
 import theme from '../../global/theme'
 
-export const CartContainer = styled.div`
+type CartContainerProps = {
+  isOpen: boolean
+}
+
+export const CartContainer = styled.div<CartContainerProps>`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: ${(props) => (props.isOpen === true ? 'flex' : 'none')};
   justify-content: flex-end;
-  z-index: 1;
-
-  &.is-open {
-    display: flex;
-  }
+  z-index: 3;
 `
 
 export const Overlay = styled.div`
@@ -23,7 +23,6 @@ export const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${theme.Colors.overlayColor};
-  opacity: 0.7;
 `
 
 export const Sidebar = styled.aside`
@@ -31,7 +30,7 @@ export const Sidebar = styled.aside`
   width: 100%;
   padding: 32px 8px;
   background-color: ${theme.Colors.text};
-  z-index: 1;
+  z-index: 3;
 `
 
 export const CartItem = styled.li`
