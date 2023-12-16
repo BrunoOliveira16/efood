@@ -19,28 +19,24 @@ const Button = ({
 }: ButtonProps) => {
   if (kind === 'link') {
     return (
-      <>
-        <ButtonContainerLink
-          displayMode={displayMode}
-          themeMode={themeMode}
-          to={to as string}
-        >
-          {placeholder}
-        </ButtonContainerLink>
-      </>
+      <ButtonContainerLink
+        displayMode={displayMode}
+        themeMode={themeMode}
+        to={to as string}
+      >
+        {placeholder}
+      </ButtonContainerLink>
     )
   }
 
   return (
-    <>
-      <ButtonContainer
-        onClick={onClick}
-        displayMode={displayMode}
-        themeMode={themeMode}
-      >
-        {placeholder}
-      </ButtonContainer>
-    </>
+    <ButtonContainer
+      onClick={onClick}
+      displayMode={displayMode}
+      themeMode={themeMode}
+    >
+      {placeholder}
+    </ButtonContainer>
   )
 }
 
