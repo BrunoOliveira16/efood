@@ -5,10 +5,11 @@ import {
   ContainerImage,
   Title,
   Text,
-  ContainerText
+  ContainerText,
+  ModalContent,
+  Overlay
 } from './styles'
 import { MdClose } from 'react-icons/md'
-import { Container } from '../../global/globalStyle'
 
 type ModalProps = {
   title: string
@@ -16,7 +17,9 @@ type ModalProps = {
   description: string
   potion: string
   price: number
-  closeModal: () => void
+  openModal?: boolean
+  closeModal?: () => void
+  handleAddItem?: () => void
 }
 
 const Modal = ({
@@ -25,7 +28,9 @@ const Modal = ({
   description,
   potion,
   price,
-  closeModal
+  openModal = false,
+  closeModal,
+  handleAddItem
 }: ModalProps) => {
   function renderTextPotion(potion: string) {
     if (potion === '1 pessoa') {
@@ -35,8 +40,9 @@ const Modal = ({
   }
 
   return (
-    <Container>
-      <ModalContainer>
+    <ModalContainer isOpen={openModal}>
+      <Overlay />
+      <ModalContent>
         <ContainerImage>
           <img src={cover} alt={title} />
         </ContainerImage>
@@ -49,11 +55,12 @@ const Modal = ({
             displayMode="inlineBlock"
             themeMode="second"
             placeholder={`Adicionar ao carrinho - ${formatPrice(price)}`}
+            onClick={handleAddItem}
           />
         </ContainerText>
         <MdClose onClick={closeModal} />
-      </ModalContainer>
-    </Container>
+      </ModalContent>
+    </ModalContainer>
   )
 }
 
