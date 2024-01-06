@@ -6,6 +6,7 @@ type ButtonProps = {
   themeMode: 'primary' | 'second'
   placeholder: string
   to?: string
+  type?: 'button' | 'reset' | 'submit'
   onClick?: () => void
 }
 
@@ -15,6 +16,7 @@ const Button = ({
   displayMode = 'fullWidth',
   themeMode = 'primary',
   to,
+  type = 'button',
   onClick
 }: ButtonProps) => {
   if (kind === 'link') {
@@ -34,6 +36,7 @@ const Button = ({
       onClick={onClick}
       displayMode={displayMode}
       themeMode={themeMode}
+      type={type}
     >
       {placeholder}
     </ButtonContainer>
