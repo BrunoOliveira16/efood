@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { close } from '../../../store/reducers/cart'
+import { close, clear } from '../../../store/reducers/cart'
 
 import Button from '../../../components/Button'
 
@@ -18,6 +18,11 @@ const Payment = ({ handleClick }: PaymentProps) => {
   function closeCart() {
     dispatch(close())
     setIsPaymentCompleted(false)
+  }
+
+  function finishPayment() {
+    setIsPaymentCompleted(true)
+    dispatch(clear())
   }
 
   return (
@@ -55,7 +60,7 @@ const Payment = ({ handleClick }: PaymentProps) => {
               displayMode="fullWidth"
               themeMode="second"
               kind="button"
-              onClick={() => setIsPaymentCompleted(true)}
+              onClick={finishPayment}
             />
           </S.FormContainer>
 
