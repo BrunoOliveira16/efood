@@ -4,7 +4,6 @@ import { PiTrash } from 'react-icons/pi'
 import { remove } from '../../../store/reducers/cart'
 import { RootReducer } from '../../../store'
 
-import { MenuDataProps } from '../../CardListHome'
 import { formatPrice } from '../../../utils'
 
 import Button from '../../../components/Button'

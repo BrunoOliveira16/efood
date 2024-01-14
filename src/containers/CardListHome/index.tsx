@@ -6,26 +6,6 @@ import Card from '../../components/Card'
 import { CardListContainer } from './styles'
 import Star from '../../assets/icons/star.svg'
 
-export type MenuDataProps = {
-  id: number
-  nome: string
-  descricao: string
-  foto: string
-  porcao: string
-  preco: number
-}
-
-export type RestaurantsDataProps = {
-  id: number
-  titulo: string
-  avaliacao: string
-  destacado: boolean
-  tipo: string
-  descricao: string
-  capa: string
-  cardapio: MenuDataProps[]
-}
-
 const CardListHome = () => {
   const { data } = useGetFeaturedRestaurantsQuery()
 
