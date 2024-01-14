@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import Router from './routes/routes'
-import Cart from './components/Cart'
+import Cart from './containers/Cart'
 import GlobalStyle from './global/globalStyle'
 import { store } from './store'
 import Footer from './components/Footer'

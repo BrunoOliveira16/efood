@@ -1,8 +1,13 @@
 import styled from 'styled-components'
 import theme from '../../global/theme'
+import { ButtonContainer } from '../../components/Button/styles'
 
 type CartContainerProps = {
   isOpen: boolean
+}
+
+type InputGroupProps = {
+  maxWidth?: string
 }
 
 export const CartContainer = styled.div<CartContainerProps>`
@@ -11,9 +16,9 @@ export const CartContainer = styled.div<CartContainerProps>`
   left: 0;
   width: 100%;
   height: 100%;
-  display: ${(props) => (props.isOpen === true ? 'flex' : 'none')};
   justify-content: flex-end;
   z-index: 3;
+  display: ${(props) => (props.isOpen === true ? 'flex' : 'none')};
 `
 
 export const Overlay = styled.div`
@@ -71,6 +76,13 @@ export const Title = styled.h3`
   margin-bottom: 16px;
 `
 
+export const SubTitle = styled.h3`
+  font-size: 16px;
+  font-weight: 700;
+  color: ${theme.Colors.primary};
+  margin-bottom: 16px;
+`
+
 export const Price = styled.p`
   font-size: 14px;
   font-weight: 400;
@@ -82,4 +94,56 @@ export const Text = styled.p`
   font-size: 14px;
   font-weight: 700;
   color: ${theme.Colors.primary};
+`
+
+export const FormContainer = styled.form`
+  margin-bottom: 8px;
+
+  ${ButtonContainer} {
+    margin-top: 24px;
+  }
+`
+
+export const InputGroup = styled.div<InputGroupProps>`
+  flex: auto;
+  max-width: ${(props) => props.maxWidth || 'auto'};
+
+  label {
+    font-size: 14px;
+    font-weight: 700;
+    color: ${theme.Colors.primary};
+    display: block;
+    margin: 8px 0;
+  }
+
+  input {
+    width: 100%;
+    background-color: ${theme.Colors.primary};
+    height: 32px;
+    padding: 8px;
+    border: 1px solid ${theme.Colors.primary};
+
+    &.error {
+      border: 1px solid red;
+    }
+  }
+`
+
+export const InputContainer = styled.div`
+  display: flex;
+  gap: 34px;
+`
+
+export const TextContainer = styled.div`
+  margin: 16px 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: ${theme.Colors.primary};
+  }
 `

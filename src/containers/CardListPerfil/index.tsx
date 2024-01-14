@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux'
 import { useGetRestaurantQuery } from '../../services/api'
 import { add, open } from '../../store/reducers/cart'
 import { getDescriptionProduct } from '../../utils'
-import { MenuDataProps } from '../CardListHome'
 import Card from '../../components/Card'
 import Modal from '../../components/Modal'
 
