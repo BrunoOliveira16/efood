@@ -17,3 +17,24 @@ declare type RestaurantsDataProps = {
   capa: string
   cardapio: MenuDataProps[]
 }
+
+declare type DeliveryDataProps = {
+  receiver: string
+  address: {
+    description: string
+    city: string
+    zipCode: string
+    number: number
+    complement: string
+  }
+}
+
+declare type PaymentDataProps = {
+  name: string
+  number: string
+  code: number
+  expires: {
+    month: number
+    year: number
+  }
+}
