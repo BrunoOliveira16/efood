@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import InputMask from 'react-input-mask'
@@ -18,17 +17,21 @@ type DeliveryProps = {
 const Delivery = ({ handleClick }: DeliveryProps) => {
   const [finalizePayment, setFinalizePayment] = useState(false)
 
+  const [deliveryInfo, setDeliveryInfo] = useState<DeliveryDataProps>({
+    receiver: '',
+    address: {
+      description: '',
+      city: '',
+      zipCode: '',
+      number: 0,
+      complement: ''
+    }
+  })
+
   const { items } = useSelector((state: RootReducer) => state.cart)
 
   const form = useFormik({
-    initialValues: {
-      fullName: '',
-      address: '',
-      city: '',
-      zipCode: '',
-      number: '',
-      complement: ''
-    },
+    initialValues: { ...deliveryInfo },
     validationSchema: Yup.object({
       fullName: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
@@ -39,9 +42,11 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
         .min(8, 'O nome precisa ter pelo menos 8 caracteres')
         .max(8, 'O campo precisa ter pelo menos 8 caracteres')
         .required('O campo é obrigatório'),
-      number: Yup.string().required('O campo é obrigatório')
+      number: Yup.number().required('O campo é obrigatório')
     }),
-    onSubmit: () => {}
+    onSubmit: (values) => {
+      setDeliveryInfo(values)
+    }
   })
 
   const checkInputHasError = (fiedlName: string) => {
@@ -52,11 +57,6 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
     return hasError
   }
 
-  // if (items.length === 0 && !isSuccess)
-  if (items.length === 0) {
-    return <Navigate to="/" />
-  }
-
   return (
     <>
       {!finalizePayment ? (
@@ -65,27 +65,27 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
           <form onSubmit={form.handleSubmit}>
             <S.FormContainer>
               <S.InputGroup>
-                <label htmlFor="fullName">Quem irá receber</label>
+                <label htmlFor="receiver">Quem irá receber</label>
                 <input
                   type="text"
-                  id="fullName"
-                  name="fullName"
-                  value={form.values.fullName}
+                  id="receiver"
+                  name="receiver"
+                  value={form.values.receiver}
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
-                  className={checkInputHasError('fullName') ? 'error' : ''}
+                  className={checkInputHasError('receiver') ? 'error' : ''}
                 />
               </S.InputGroup>
               <S.InputGroup>
-                <label htmlFor="address">Endereço</label>
+                <label htmlFor="description">Endereço</label>
                 <input
                   type="text"
-                  id="address"
-                  name="address"
-                  value={form.values.address}
+                  id="description"
+                  name="description"
+                  value={form.values.address.description}
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
-                  className={checkInputHasError('address') ? 'error' : ''}
+                  className={checkInputHasError('description') ? 'error' : ''}
                 />
               </S.InputGroup>
               <S.InputGroup>
@@ -94,7 +94,7 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
                   type="text"
                   id="city"
                   name="city"
-                  value={form.values.city}
+                  value={form.values.address.city}
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                   className={checkInputHasError('city') ? 'error' : ''}
@@ -107,7 +107,7 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
                     type="text"
                     id="zipCode"
                     name="zipCode"
-                    value={form.values.zipCode}
+                    value={form.values.address.zipCode}
                     onChange={form.handleChange}
                     mask="99999-999"
                     onBlur={form.handleBlur}
@@ -117,10 +117,10 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
                 <S.InputGroup>
                   <label htmlFor="number">Número</label>
                   <input
-                    type="text"
+                    type="number"
                     id="number"
                     name="number"
-                    value={form.values.number}
+                    value={form.values.address.number}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
                     className={checkInputHasError('number') ? 'error' : ''}
@@ -133,7 +133,7 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
                   type="text"
                   id="complement"
                   name="complement"
-                  value={form.values.complement}
+                  value={form.values.address.complement}
                   onChange={form.handleChange}
                 />
               </S.InputGroup>
@@ -142,6 +142,7 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
                 displayMode="fullWidth"
                 themeMode="second"
                 kind="button"
+                type="submit"
                 onClick={() => setFinalizePayment(true)}
               />
             </S.FormContainer>
@@ -156,7 +157,11 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
           />
         </S.Sidebar>
       ) : (
-        <Payment handleClick={() => setFinalizePayment(false)} />
+        <Payment
+          deliveryInfo={deliveryInfo}
+          productItems={items}
+          handleClick={() => setFinalizePayment(false)}
+        />
       )}
     </>
   )
