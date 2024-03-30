@@ -26,3 +26,9 @@ export function getDescriptionProduct(description: string) {
   }
   return description
 }
+
+export const getTotalPrice = (items: MenuDataProps[]) => {
+  return items.reduce((prevValue, currentValue) => {
+    return (prevValue += currentValue.preco!)
+  }, 0)
+}

@@ -27,14 +27,13 @@ declare type DeliveryDataProps = {
     number: number
     complement: string
   }
-}
-
-declare type PaymentDataProps = {
-  name: string
-  number: string
-  code: number
-  expires: {
-    month: number
-    year: number
+  payment: {
+    name: string
+    cardNumber: string
+    code: string
+    expires: {
+      month: string
+      year: string
+    }
   }
 }
