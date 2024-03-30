@@ -36,6 +36,10 @@ export const Sidebar = styled.aside`
   padding: 32px 8px;
   background-color: ${theme.Colors.text};
   z-index: 3;
+
+  ${ButtonContainer} {
+    margin-top: 8px;
+  }
 `
 
 export const CartItem = styled.li`
@@ -98,10 +102,10 @@ export const Text = styled.p`
 
 export const FormContainer = styled.form`
   margin-bottom: 8px;
+`
 
-  ${ButtonContainer} {
-    margin-top: 24px;
-  }
+export const ContainerButton = styled.form`
+  margin-top: 24px;
 `
 
 export const InputGroup = styled.div<InputGroupProps>`
@@ -125,6 +129,7 @@ export const InputGroup = styled.div<InputGroupProps>`
 
     &.error {
       border: 1px solid red;
+      color: red;
     }
   }
 `
