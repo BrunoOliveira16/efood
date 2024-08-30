@@ -2,15 +2,11 @@ import styled from 'styled-components'
 import theme from '../../global/theme'
 import { ButtonContainer } from '../../components/Button/styles'
 
-type CartContainerProps = {
-  isOpen: boolean
-}
-
 type InputGroupProps = {
   maxWidth?: string
 }
 
-export const CartContainer = styled.div<CartContainerProps>`
+export const CartContainer = styled.div<{ $isOpen: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -18,7 +14,7 @@ export const CartContainer = styled.div<CartContainerProps>`
   height: 100%;
   justify-content: flex-end;
   z-index: 3;
-  display: ${(props) => (props.isOpen === true ? 'flex' : 'none')};
+  display: ${({ $isOpen }) => ($isOpen ? 'flex' : 'none')};
 `
 
 export const Overlay = styled.div`

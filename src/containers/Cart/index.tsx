@@ -20,7 +20,7 @@ const Cart = () => {
   }
 
   return (
-    <S.CartContainer isOpen={isOpen}>
+    <S.CartContainer $isOpen={isOpen}>
       <S.Overlay onClick={closeCart} />
       {showProduct ? (
         <Products handleClick={() => setShowProduct(false)} />

@@ -5,9 +5,11 @@ import { useDispatch } from 'react-redux'
 import { useGetRestaurantQuery } from '../../services/api'
 import { add, open } from '../../store/reducers/cart'
 import { getDescriptionProduct } from '../../utils'
+
 import Card from '../../components/Card'
 import Modal from '../../components/Modal'
 
+import { Container } from '../../global/globalStyle'
 import {
   BannerContainer,
   CardListContainer,
@@ -16,7 +18,6 @@ import {
   TextMessage,
   Title
 } from './styles'
-import { Container } from '../../global/globalStyle'
 
 const CardListPerfil = () => {
   const [selectedItemId, setSelectedItemId] = useState<number | null>(null)
@@ -24,7 +25,6 @@ const CardListPerfil = () => {
 
   const { id } = useParams()
   const { data } = useGetRestaurantQuery(id!)
-
   const dispatch = useDispatch()
 
   function handleCardClick(itemId: number) {
@@ -94,6 +94,7 @@ const CardListPerfil = () => {
   return (
     <ContainerListPerfil>
       {renderModal()}
+
       <BannerContainer
         key={data.id}
         style={{ backgroundImage: `url(${data.capa})` }}
@@ -103,6 +104,7 @@ const CardListPerfil = () => {
           <Title>{data?.titulo}</Title>
         </Container>
       </BannerContainer>
+
       <Container>
         <CardListContainer key={data.id}>
           {renderProductList(data.cardapio)}

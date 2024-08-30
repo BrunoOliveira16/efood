@@ -24,8 +24,8 @@ const Button = ({
   if (kind === 'link') {
     return (
       <ButtonContainerLink
-        displayMode={displayMode}
-        themeMode={themeMode}
+        $displayMode={displayMode}
+        $themeMode={themeMode}
         to={to as string}
       >
         {placeholder}
@@ -36,8 +36,8 @@ const Button = ({
   return (
     <ButtonContainer
       onClick={onClick}
-      displayMode={displayMode}
-      themeMode={themeMode}
+      $displayMode={displayMode}
+      $themeMode={themeMode}
       type={type}
       disabled={disabled}
     >

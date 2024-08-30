@@ -3,9 +3,7 @@ import { PiTrash } from 'react-icons/pi'
 
 import { remove } from '../../../store/reducers/cart'
 import { RootReducer } from '../../../store'
-
 import { formatPrice, getTotalPrice } from '../../../utils'
-
 import Button from '../../../components/Button'
 
 import * as S from '../styles'
@@ -28,10 +26,12 @@ const Products = ({ handleClick }: ProductsProps) => {
     return products.map((product) => (
       <S.CartItem key={product.id}>
         <img src={product.foto} alt={product.nome} />
+
         <div>
           <S.Title>{product.nome}</S.Title>
           <S.Price>{formatPrice(product.preco)}</S.Price>
         </div>
+
         <PiTrash fill="#E66767" onClick={() => handleRemoveItem(product.id)} />
       </S.CartItem>
     ))

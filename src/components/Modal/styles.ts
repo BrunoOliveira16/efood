@@ -1,17 +1,13 @@
 import styled from 'styled-components'
 import theme from '../../global/theme'
 
-type ModalContainerProps = {
-  isOpen: boolean
-}
-
-export const ModalContainer = styled.div<ModalContainerProps>`
+export const ModalContainer = styled.div<{ $isOpen: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: ${(props) => (props.isOpen === true ? 'flex' : 'none')};
+  display: ${({ $isOpen }) => ($isOpen ? 'flex' : 'none')};
   justify-content: center;
   z-index: 2;
 `

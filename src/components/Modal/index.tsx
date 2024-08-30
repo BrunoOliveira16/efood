@@ -1,5 +1,7 @@
 import Button from '../Button'
 import { formatPrice } from '../../utils'
+
+import { MdClose } from 'react-icons/md'
 import {
   ModalContainer,
   ContainerImage,
@@ -9,7 +11,6 @@ import {
   ModalContent,
   Overlay
 } from './styles'
-import { MdClose } from 'react-icons/md'
 
 type ModalProps = {
   title: string
@@ -17,7 +18,7 @@ type ModalProps = {
   description: string
   potion: string
   price: number
-  openModal?: boolean
+  openModal: boolean
   closeModal?: () => void
   handleAddItem?: () => void
 }
@@ -40,16 +41,20 @@ const Modal = ({
   }
 
   return (
-    <ModalContainer isOpen={openModal}>
+    <ModalContainer $isOpen={openModal}>
       <Overlay />
+
       <ModalContent>
         <ContainerImage>
           <img src={cover} alt={title} />
         </ContainerImage>
+
         <ContainerText>
           <Title>{title}</Title>
           <Text>{description}</Text>
+
           {renderTextPotion(potion)}
+
           <Button
             kind="button"
             displayMode="inlineBlock"
@@ -58,6 +63,7 @@ const Modal = ({
             onClick={handleAddItem}
           />
         </ContainerText>
+
         <MdClose onClick={closeModal} />
       </ModalContent>
     </ModalContainer>

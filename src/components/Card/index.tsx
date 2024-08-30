@@ -1,5 +1,6 @@
 import Button from '../Button'
 import Tag from '../Tag'
+
 import {
   Title,
   Text,
@@ -73,20 +74,25 @@ const Card = ({
 
   return (
     <CardContainer>
-      <CardImage card={card}>
+      <CardImage $card={card}>
         <Cover src={cover} alt={cover} />
       </CardImage>
-      <CardContent card={card}>
+
+      <CardContent $card={card}>
         <CardHeader>
-          <Title card={card}>{title}</Title>
+          <Title $card={card}>{title}</Title>
+
           <CardHeader>
-            {rating && <Title card={card}>{rating}</Title>}
+            {rating && <Title $card={card}>{rating}</Title>}
             {iconName && <Icon src={iconName} alt={iconName} />}
           </CardHeader>
         </CardHeader>
-        <Text card={card}>{description}</Text>
+
+        <Text $card={card}>{description}</Text>
+
         {renderTypeButton(kindButton)}
       </CardContent>
+
       {tagType && renderTags(tagType, tagHighlight)}
     </CardContainer>
   )

@@ -3,8 +3,8 @@ import { getDescription } from '../../utils'
 
 import Card from '../../components/Card'
 
-import { CardListContainer } from './styles'
 import Star from '../../assets/icons/star.svg'
+import { CardListContainer } from './styles'
 
 const CardListHome = () => {
   const { data } = useGetFeaturedRestaurantsQuery()

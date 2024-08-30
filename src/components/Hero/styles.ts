@@ -1,8 +1,8 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import theme from '../../global/theme'
-import backgroundImage from '../../assets/hero.png'
 import { Container } from '../../global/globalStyle'
-import { Link } from 'react-router-dom'
+import backgroundImage from '../../assets/images/hero.png'
 
 export const HeroContainer = styled.header`
   width: 100%;

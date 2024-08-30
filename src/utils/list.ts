@@ -1,7 +1,7 @@
 /* ============== Social Icons ================ */
-import instagram from '../assets/instagram.svg'
-import facebook from '../assets/facebook.svg'
-import twitter from '../assets/twitter.svg'
+import instagram from '../assets/icons/instagram.svg'
+import facebook from '../assets/icons/facebook.svg'
+import twitter from '../assets/icons/twitter.svg'
 
 export const SocialLinks = [
   {
