@@ -42,6 +42,7 @@ const Products = ({ handleClick }: ProductsProps) => {
       {items.length > 0 ? (
         <>
           {RenderCartItem(items)}
+
           <S.TotalContainer>
             <S.Text>Valor total</S.Text>
             <S.Text>{formatPrice(totalPrice)}</S.Text>

@@ -37,3 +37,33 @@ declare type DeliveryDataProps = {
     }
   }
 }
+
+declare type ProductProps = {
+  id: number
+  price: number
+}
+
+declare type PurchasePayloadProps = {
+  products: ProductProps[]
+  delivery: {
+    receiver: string
+    address: {
+      description: string
+      city: string
+      zipCode: string
+      number: number
+      complement: string
+    }
+  }
+  payment: {
+    card: {
+      name: string
+      number: string
+      code: string
+      expires: {
+        month: string
+        year: string
+      }
+    }
+  }
+}
