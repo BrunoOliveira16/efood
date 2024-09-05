@@ -3,11 +3,14 @@ import { SocialLinks } from '../../utils/list'
 
 import { FooterContainer, SocialIcons, Text } from './styles'
 
-import LogoImage from '../../assets/images/logoImage.png'
-
 const Footer = () => (
   <FooterContainer>
-    <Logo kind="link" cover={LogoImage} title="Logo eFood" to="/" />
+    <Logo
+      kind="link"
+      cover="https://raw.githubusercontent.com/BrunoOliveira16/Curso-Engenheiro-Front-End-EBAC/main/Modulo-35/ImagesEfood/logo.png"
+      title="Logo eFood"
+      to="/"
+    />
 
     <SocialIcons>
       {SocialLinks.map((item) => (
