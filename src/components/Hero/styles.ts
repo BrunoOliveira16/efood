@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import theme from '../../global/theme'
 import { Container } from '../../global/globalStyle'
+import BannerImage from '../../assets/images/hero.png'
 
 export const HeroContainer = styled.header`
   width: 100%;
@@ -9,7 +10,7 @@ export const HeroContainer = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: url('/hero.png');
+  background: url(${BannerImage});
   background-size: cover;
   background-repeat: no-repeat;
 

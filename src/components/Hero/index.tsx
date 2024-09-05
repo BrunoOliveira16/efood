@@ -5,7 +5,7 @@ import { open } from '../../store/reducers/cart'
 import Logo from '../Logo'
 
 import { Container } from '../../global/globalStyle'
-
+import LogoImage from '../../assets/images/logo.png'
 import {
   HeroContainer,
   HeroHeader,
@@ -30,13 +30,13 @@ const Hero = ({ textContent, title }: HeroProps) => {
 
   function renderHeaderContent(item: string | undefined) {
     if (item === undefined) {
-      return <Logo kind="link" cover="/logo.png" title="Logo eFood" to="/" />
+      return <Logo kind="link" cover={LogoImage} title="Logo eFood" to="/" />
     }
 
     return (
       <HeroHeader>
         <TitleLink to="/">{item}</TitleLink>
-        <Logo kind="link" cover="/logo.png" title="Logo eFood" to="/" />
+        <Logo kind="link" cover={LogoImage} title="Logo eFood" to="/" />
         <Title onClick={handleOpenCart}>
           {items.length} produto(s) no carrinho
         </Title>
