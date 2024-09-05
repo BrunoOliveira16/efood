@@ -18,6 +18,14 @@ export const HeroContainer = styled.header`
     flex-direction: column;
     justify-content: center;
   }
+
+  @media (max-width: 768px) {
+    padding: 64px 16px 40px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 32px 16px;
+  }
 `
 
 export const HeroHeader = styled.div`
@@ -26,6 +34,11 @@ export const HeroHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+
+  @media (max-width: 425px) {
+    flex-direction: column;
+    gap: 16px;
+  }
 `
 
 export const Title = styled.h1`
@@ -55,4 +68,12 @@ export const Text = styled.h2`
   font-weight: 900;
   line-height: normal;
   margin-top: 138px;
+
+  @media (max-width: 768px) {
+    margin-top: 16px;
+  }
+
+  @media (max-width: 425px) {
+    margin-top: 0;
+  }
 `

@@ -10,4 +10,14 @@ export const CardListContainer = styled.div`
   row-gap: 48px;
 
   background-color: ${theme.Colors.background};
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    padding: 16px;
+  }
+
+  @media (max-width: 425px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 `

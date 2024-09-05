@@ -32,6 +32,10 @@ export const BannerContainer = styled.div`
     position: relative;
     z-index: 1;
   }
+
+  @media (max-width: 768px) {
+    padding: 25px 16px 32px;
+  }
 `
 
 export const CardListContainer = styled.div`
@@ -43,6 +47,15 @@ export const CardListContainer = styled.div`
   row-gap: 40px;
 
   background-color: ${theme.Colors.background};
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    padding: 16px;
+  }
+
+  @media (max-width: 425px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Title = styled.h1`

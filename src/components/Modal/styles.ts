@@ -42,6 +42,16 @@ export const ModalContent = styled.div`
     right: 8px;
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
+
+  @media (max-width: 425px) {
+    flex-direction: column;
+    margin-top: 0;
+    top: 60px;
+  }
 `
 
 export const ContainerImage = styled.div`
@@ -52,6 +62,10 @@ export const ContainerImage = styled.div`
     width: 100%;
     height: 280px;
     object-fit: cover;
+  }
+
+  @media (max-width: 425px) {
+    max-width: 100%;
   }
 `
 
