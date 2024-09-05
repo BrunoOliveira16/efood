@@ -43,11 +43,11 @@ export const ModalContent = styled.div`
     cursor: pointer;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.breakpoints.tablet}) {
     width: 90%;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: ${theme.breakpoints.mobile}) {
     flex-direction: column;
     margin-top: 0;
     top: 60px;
@@ -64,7 +64,7 @@ export const ContainerImage = styled.div`
     object-fit: cover;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: ${theme.breakpoints.mobile}) {
     max-width: 100%;
   }
 `

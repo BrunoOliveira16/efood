@@ -19,11 +19,11 @@ export const HeroContainer = styled.header`
     justify-content: center;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.breakpoints.tablet}) {
     padding: 64px 16px 40px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.breakpoints.mobile}) {
     padding: 32px 16px;
   }
 `
@@ -35,7 +35,7 @@ export const HeroHeader = styled.div`
   align-items: center;
   width: 100%;
 
-  @media (max-width: 425px) {
+  @media (max-width: ${theme.breakpoints.mobile}) {
     flex-direction: column;
     gap: 16px;
   }
@@ -69,11 +69,11 @@ export const Text = styled.h2`
   line-height: normal;
   margin-top: 138px;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.breakpoints.tablet}) {
     margin-top: 16px;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: ${theme.breakpoints.mobile}) {
     margin-top: 0;
   }
 `

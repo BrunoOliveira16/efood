@@ -11,13 +11,14 @@ export const CardListContainer = styled.div`
 
   background-color: ${theme.Colors.background};
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.breakpoints.tablet}) {
     grid-template-columns: 1fr 1fr;
-    padding: 16px;
+    padding: 32px 16px;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: ${theme.breakpoints.mobile}) {
     grid-template-columns: 1fr;
     gap: 16px;
+    padding: 16px;
   }
 `
