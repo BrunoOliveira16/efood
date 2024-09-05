@@ -43,6 +43,12 @@ Para executar este projeto localmente em sua máquina, siga estas etapas:
 
 - Execute o comando `npm start` para rodar o projeto.
 
+- Verificar problemas de ESLint: `npm run lint`
+
+- Corrigir automaticamente problemas de ESLint (quando possível): `npm run lint:fix`
+
+- Formatar código com Prettier: `npm run format`
+
 <br>
 
 ## ⭐ Desafio do Projeto
