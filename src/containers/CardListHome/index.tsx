@@ -14,7 +14,7 @@ const CardListHome = () => {
   return (
     <CardListContainer>
       {data.map((item: RestaurantsDataProps) => (
-        <>
+        <div key={item.id}>
           <Card
             key={item.id}
             card="primary"
@@ -29,7 +29,7 @@ const CardListHome = () => {
             tagHighlight={item.destacado}
             cover={item.capa}
           />
-        </>
+        </div>
       ))}
     </CardListContainer>
   )

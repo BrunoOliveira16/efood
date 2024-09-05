@@ -19,6 +19,7 @@ type DeliveryProps = {
 
 const Delivery = ({ handleClick }: DeliveryProps) => {
   const [nextStep, setNextStep] = useState(false)
+  const [showOrderSuccess, setShowOrderSuccess] = useState(false)
 
   const [purchase, { data, isSuccess }] = usePurchaseMutation()
   const { items } = useSelector((state: RootReducer) => state.cart)
@@ -34,7 +35,8 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
 
   function closeCart() {
     dispatch(close())
-    setNextStep(false)
+    setShowOrderSuccess(false)
+    window.location.href = '/'
   }
 
   function handleSubmitOrder(item: DeliveryDataProps) {
@@ -67,6 +69,7 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
     }
 
     purchase(mountObject)
+    setShowOrderSuccess(true)
   }
 
   function renderFormSubTitle() {
@@ -121,7 +124,7 @@ const Delivery = ({ handleClick }: DeliveryProps) => {
 
   return (
     <S.Sidebar>
-      {isSuccess && data ? (
+      {showOrderSuccess && data ? (
         <OrderSuccess orderId={data.orderId} handleClick={closeCart} />
       ) : (
         <>

@@ -96,11 +96,11 @@ export const Text = styled.p`
   color: ${theme.Colors.primary};
 `
 
-export const FormContainer = styled.form`
+export const FormContainer = styled.div`
   margin-bottom: 8px;
 `
 
-export const ContainerButton = styled.form`
+export const ContainerButton = styled.div`
   margin-top: 24px;
 `
 
