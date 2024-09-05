@@ -2,11 +2,10 @@ import Logo from '../Logo'
 import { SocialLinks } from '../../utils/list'
 
 import { FooterContainer, SocialIcons, Text } from './styles'
-import LogoImage from '../../assets/images/logo.png'
 
 const Footer = () => (
   <FooterContainer>
-    <Logo kind="link" cover={LogoImage} title="Logo eFood" to="/" />
+    <Logo kind="link" cover="/logo.png" title="Logo eFood" to="/" />
 
     <SocialIcons>
       {SocialLinks.map((item) => (
