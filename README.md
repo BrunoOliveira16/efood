@@ -10,7 +10,8 @@
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Styled-components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
 
-<img src="./src/assets/images/screenshot.jpg" alt="screenshot do projeto" />
+<img src="https://raw.githubusercontent.com/BrunoOliveira16/Curso-Engenheiro-Front-End-EBAC/main/Modulo-35/ImagesEfood/screenshot.jpg
+" alt="screenshot do projeto" />
 
 <br>
 
