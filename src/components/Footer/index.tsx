@@ -3,7 +3,7 @@ import { SocialLinks } from '../../utils/list'
 
 import { FooterContainer, SocialIcons, Text } from './styles'
 
-import LogoImage from '../../assets/images/logo.png'
+import LogoImage from '../../assets/images/logoImage.png'
 
 const Footer = () => (
   <FooterContainer>

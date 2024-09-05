@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import theme from '../../global/theme'
 import { Container } from '../../global/globalStyle'
-import BannerImage from '../../assets/images/hero.png'
+import BannerImage from '../../assets/images/heroImage.png'
 
 export const HeroContainer = styled.header`
   width: 100%;

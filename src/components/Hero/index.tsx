@@ -5,7 +5,7 @@ import { open } from '../../store/reducers/cart'
 import Logo from '../Logo'
 
 import { Container } from '../../global/globalStyle'
-import LogoImage from '../../assets/images/logo.png'
+import LogoImage from '../../assets/images/logoImage.png'
 import {
   HeroContainer,
   HeroHeader,
